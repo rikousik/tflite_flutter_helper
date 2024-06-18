@@ -27,7 +27,7 @@ class ImageContainer extends BaseImageContainer {
     int len = _image.data!.length;
     bool isGrayscale = true;
     for (int i = (len / 4).floor(); i < _image.data!.length; i++) {
-      if (_image.data?.toUint8List()[i] != 0) {
+      if (_image.data[i] != 0) {
         isGrayscale = false;
         break;
       }
