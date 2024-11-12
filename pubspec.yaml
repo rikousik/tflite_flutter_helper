@@ -13,15 +13,15 @@ dependencies:
   meta: ^1.12.0
   quiver: ^3.2.1
   path_provider: ^2.1.3
-#  tflite_flutter: ^0.10.4
+  tflite_flutter: ^0.10.4
   tuple: ^2.0.2
   camera: ^0.11.0+1
   ffi: ^2.1.2
   image: ^3.0.2
-  tflite_flutter:
-    git:
-      url: https://github.com/vgobbi8/tflite_flutter_plugin
-      ref: 50345552cffeb1b75cd0d012368ab93a9c969956 #master
+#  tflite_flutter:
+#    git:
+#      url: https://github.com/vgobbi8/tflite_flutter_plugin
+#      ref: 50345552cffeb1b75cd0d012368ab93a9c969956 #master
 dev_dependencies:
   flutter_test:
     sdk: flutter
