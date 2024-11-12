@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.orange, accentColor: Colors.orange),
+      theme: ThemeData(primaryColor: Colors.orange),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -124,8 +124,8 @@ class _MyAppState extends State<MyApp> {
                   shrinkWrap: true,
                   itemCount: preds.length,
                   itemBuilder: (context, i) {
-                    final color = randomColorGen.randomColor(
-                        colorBrightness: ColorBrightness.light);
+                    final color =
+                        randomColorGen.randomColor(colorBrightness: ColorBrightness.light);
                     return Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Row(
@@ -133,9 +133,8 @@ class _MyAppState extends State<MyApp> {
                           Expanded(
                             child: Text(
                               preds.elementAt(i).label,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.blueAccent),
+                              style:
+                                  TextStyle(fontWeight: FontWeight.w500, color: Colors.blueAccent),
                             ),
                           ),
                           Stack(
@@ -167,8 +166,8 @@ class _MyAppState extends State<MyApp> {
 class PredictionScoreBar extends StatelessWidget {
   final double ratio;
   final Color color;
-  const PredictionScoreBar({Key? key, required this.ratio, required this.color})
-      : super(key: key);
+
+  const PredictionScoreBar({Key? key, required this.ratio, required this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -15,7 +15,7 @@ class Classifier {
 
   late TensorBuffer _outputBuffer;
 
-  TfLiteType _outputType = TfLiteType.uint8;
+  TensorType _outputType = TensorType.uint8;
 
   final String _modelFileName = 'yamnet.tflite';
   final String _labelFileName = 'assets/yamnet_class_map.csv';
@@ -35,8 +35,7 @@ class Classifier {
 
   Future<void> loadModel() async {
     try {
-      interpreter = await Interpreter.fromAsset(_modelFileName,
-          options: _interpreterOptions);
+      interpreter = await Interpreter.fromAsset(_modelFileName, options: _interpreterOptions);
       print('Interpreter Created Successfully');
       print(interpreter.getInputTensors());
       print(interpreter.getOutputTensors());
@@ -57,14 +56,13 @@ class Classifier {
   List<Category> predict(List<int> audioSample) {
     final pres = DateTime.now().millisecondsSinceEpoch;
     Uint8List bytes = Uint8List.fromList(audioSample);
-    TensorAudio tensorAudio = TensorAudio.create(
-        TensorAudioFormat.create(1, sampleRate), _inputShape[0]);
+    TensorAudio tensorAudio =
+        TensorAudio.create(TensorAudioFormat.create(1, sampleRate), _inputShape[0]);
     tensorAudio.loadShortBytes(bytes);
     final pre = DateTime.now().millisecondsSinceEpoch - pres;
 
     final runs = DateTime.now().millisecondsSinceEpoch;
-    interpreter.run(
-        tensorAudio.tensorBuffer.getBuffer(), _outputBuffer.getBuffer());
+    interpreter.run(tensorAudio.tensorBuffer.getBuffer(), _outputBuffer.getBuffer());
     final run = DateTime.now().millisecondsSinceEpoch - runs;
 
     Map<String, double> labeledProb = {};
