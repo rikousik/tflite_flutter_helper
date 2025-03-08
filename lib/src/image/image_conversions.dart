@@ -14,7 +14,7 @@ class ImageConversions {
 
     int h = rgb.getHeight(shape);
     int w = rgb.getWidth(shape);
-    Image image = Image(w, h);
+    Image image = Image(width: w, height: h);
 
     List<int> rgbValues = buffer.getIntList();
     assert(rgbValues.length == w * h * 3);
@@ -44,9 +44,11 @@ class ImageConversions {
     final grayscale = ColorSpaceType.GRAYSCALE;
     grayscale.assertShape(shape);
 
-    final image = Image.fromBytes(grayscale.getWidth(shape),
-        grayscale.getHeight(shape), uint8Buffer.getBuffer().asUint8List(),
-        format: Format.luminance);
+    final image = Image.fromBytes(
+        width: grayscale.getWidth(shape),
+        height: grayscale.getHeight(shape),
+        bytes: uint8Buffer.getBuffer(),
+        format: Format.float32);
 
     return image;
   }
